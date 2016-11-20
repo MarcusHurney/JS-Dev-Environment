@@ -9,14 +9,14 @@ describe('Our first test', () => {
 });
 
 describe('index.html', () => {
-  it('should say hello', (done) => {
+  it('should have h1 tag that says Users', (done) => {
     // index will hold the contents of our html file in memory
     const index = fs.readFileSync('./src/index.html', "utf-8");
     // jsdom.env will create a virtual DOM in memory using index
     // then callback will run with window as a virtual window
     jsdom.env(index, function(err, window) {
       const h1 = window.document.getElementsByTagName('h1')[0];
-      expect(h1.innerHTML).to.equal("Hello Earth");
+      expect(h1.innerHTML).to.equal("Users");
       // report test results only when done (handles async calls like jsdom.env)
       done();
       window.close();
